@@ -1,3 +1,6 @@
+# VERSION
+Running with node 16.16.0
+
 # HachinetAntDesign
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
