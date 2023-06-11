@@ -1,28 +1,31 @@
 <nz-layout>
   <nz-sider nzCollapsible nzWidth="200px">
     <div class="logo"></div>
-    <ul nz-menu nzTheme="dark" nzMode="inline">
-      <ng-container *ngFor="let menu of menuList">
-
-        <ng-container *ngIf="!menu.children || menu.children.length === 0; else parentTemplate">
-          <li nz-menu-item (click)="onClickMenu(menu)">
-            <span nz-icon [nzType]="menu.icon"></span>
-            <span>{{ menu.title }}</span>
-          </li>
+    <nz-spin *ngIf="isloading; else menu" nzSimple></nz-spin>
+    <ng-template #menu>
+      <ul nz-menu nzTheme="dark" nzMode="inline">
+        <ng-container *ngFor="let menu of menuList">
+  
+          <ng-container *ngIf="!menu.children || menu.children.length === 0; else parentTemplate">
+            <li nz-menu-item (click)="onClickMenu(menu)">
+              <span nz-icon [nzType]="menu.icon"></span>
+              <span>{{ menu.title }}</span>
+            </li>
+          </ng-container>
+  
+          <ng-template #parentTemplate>
+            <li nz-submenu [nzTitle]="menu.title" [nzIcon]="menu.icon" (click)="onClickMenu(menu)">
+              <ul>
+                <ng-container *ngFor="let childMenu of menu.children">
+                  <li nz-menu-item (click)="onClickMenu(childMenu)">{{ childMenu.title }}</li>
+                </ng-container>
+              </ul>
+            </li>
+          </ng-template>
+  
         </ng-container>
-
-        <ng-template #parentTemplate>
-          <li nz-submenu [nzTitle]="menu.title" [nzIcon]="menu.icon" (click)="onClickMenu(menu)">
-            <ul>
-              <ng-container *ngFor="let childMenu of menu.children">
-                <li nz-menu-item (click)="onClickMenu(childMenu)">{{ childMenu.title }}</li>
-              </ng-container>
-            </ul>
-          </li>
-        </ng-template>
-
-      </ng-container>
-    </ul>
+      </ul>
+    </ng-template>
   </nz-sider>
   <nz-layout>
     <nz-content>

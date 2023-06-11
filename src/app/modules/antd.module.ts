@@ -9,6 +9,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzResizableModule } from 'ng-zorro-antd/resizable';
 import { NzPipesModule } from 'ng-zorro-antd/pipes';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 @NgModule({
   exports: [
@@ -21,6 +22,7 @@ import { NzPipesModule } from 'ng-zorro-antd/pipes';
     NzToolTipModule,
     NzResizableModule,
     NzPipesModule,
+    NzSpinModule
   ]
 })
 export class AntdModule {
